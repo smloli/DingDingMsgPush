@@ -19,7 +19,7 @@ func main() {
 	webHook := ""
 	client := &http.Client{}
 	data.Msgtype = "markdown"
-	data.Markdown = make(map[string]string, 1)
+	data.Markdown = make(map[string]string)
 	// 这里填入要发送的标题
 	data.Markdown["title"] = "柚子"
 	// 这里填入要发送的内容
