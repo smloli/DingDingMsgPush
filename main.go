@@ -26,9 +26,14 @@ func main() {
 	data.Markdown["text"] = "小萝莉"
 	r, _ := json.Marshal(data)
 	req, _ := http.NewRequest("POST", webHook, strings.NewReader(string(r)))
-	req.Header.Add("Content-Type", "application/json")
-	req.Header.Add("Charset", "UTF-8")
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("Charset", "UTF-8")
 	resp, _ := client.Do(req)
+        if err != nil {
+            fmt.Println(err)
+            return
+        }
+        defer resp.Body.Close()
 	body, _ := ioutil.ReadAll(resp.Body)
 	fmt.Println(string(body))
 }
